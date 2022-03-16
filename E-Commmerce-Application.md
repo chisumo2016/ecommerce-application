@@ -102,6 +102,38 @@
 
 
 ## Laravel 9 Multi Auth Part 1
+    The StatefulGuard can be found in vendor/laravel/framework/src/IIuminate/Contracts/Auth/StatefulGuard.php:5
+    We need tp change our namespace  to namespace App\Guards; in the AdminStatefulGuard.php file
+    we need to update our Admincontroller by copying everthing from AuthenticatedSessionController and paste it in the AdminController.php file
+       Update our namespace namespace App\Http\Controllers;
+    Create a web route 
+       create a group of routes in the web.php file for login  and middleware for admin and web
+    Create loginForm into AdminController
+       public function loginForm()
+        {
+            return view('auth.login',['guard' =>'admin']);
+        }
+    We're using the same view for the admin and the user (views/auth/login.blade.php)
+       Insiide the auth.login.blade.php file we need to change the guard to admin   
+            <form method="POST" action="{{ isset($guard) ? url($guard.'/login') : route('login') }}"></form>
+                localhost:8000/admin/login
+                localhost:8000/login
+    In the AdminController we need to support the following files 
+          RedirectIfTwoFactorAuthenticatable::class : null,
+         AttemptToAuthenticate::class,
+         PrepareAuthenticatedSession::class,
+     View all in vendor/laravel/fortify/src/Actions/AttemptToAuthenticate.php
+        Copy the following files and paste into the app/actions/Fortity folder
+            AttemptToAuthenticate.php
+            RedirectIfTwoFactorAuthenticatable.php
+    AttemptToAuthenticate file we need to make modifications  
+       To change our namespace to App\Actions\Fortify 
+            namespace App\Actions\Fortify;
+    RedirectIfTwoFactorAuthenticatable.php  file we need to make modifications  
+      To change our namespace to App\Actions\Fortify 
+            namespace App\Actions\Fortify;
+    You dont need to change anytthing , will be the same as the original file
+    We need to create a middlware
 
 ## Laravel 9 Multi Auth Part 2
 
