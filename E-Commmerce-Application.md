@@ -133,9 +133,27 @@
       To change our namespace to App\Actions\Fortify 
             namespace App\Actions\Fortify;
     You dont need to change anytthing , will be the same as the original file
-    We need to create a middlware
 
 ## Laravel 9 Multi Auth Part 2
+    We need to create another function inside the RouteServiceProvider
+    public static function redirectTo($guard)
+    {
+    return $guard. '/dashboard';
+    }
+    Wee need to pass the guard to the RedirectifAuthenticated.php
+    return redirect($guard. '/dashboard');
+    We need to create a middlware for our AdminRedirectIfAuthenticated
+    php artisan make:middleware AdminRedirectIfAuthenticated
+    copy everthing from the RedirectIfAuthenticated.php file and paste it in the AdminRedirectIfAuthenticated.php file
+    Register the middleware into our kernel
+         'admin' => \App\Http\Middleware\AdminRedirectIfAuthenticated::class,
+    Go to AdminController  and look for store method , look for LoginResponse and open (vendor/laravel/fortify/src/Http/Responses/LoginResponse.php)
+       Create another folder called Responses and make file called LoginResponse.php
+       Copy everything from the LoginResponse.php file and paste it in the LoginResponse.php file
+       Update the namespace to namespace App\Http\Responses;
+       We need to redirect to our admin/dashboard
+          : redirect()->intended(Fortify::redirects('admin/dashboard'));
+
 
 ## Laravel 9 Multi Auth Part 3
 
