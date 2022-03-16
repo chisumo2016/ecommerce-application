@@ -153,10 +153,20 @@
        Update the namespace to namespace App\Http\Responses;
        We need to redirect to our admin/dashboard
           : redirect()->intended(Fortify::redirects('admin/dashboard'));
-
+    Test the application if it's working as it should be 
+        localhost:8000/admin/login
+        localhost:8000/admin/dashboard  some bugs not directing to dashboard but it's working
+        
 
 ## Laravel 9 Multi Auth Part 3
+    We successfully logged in as an admin and user but not redirecting to the dashboard
+    The problem is happening in the AdminController  we should change responses
+      CHANGE:  use Laravel\Fortify\Contracts\LoginResponse; 
+      TO    :  use App\Http\Responses\LoginResponse;
 
+    Inside the AdminController we need to change the redirect to the dashboard
+      CHANGE:   : redirect()->intended(Fortify::redirects('admin/dashboard'));
+      TO    :  : redirect()->intended('admin/dashboard');
 ## Laravel 9 Multi Auth Part 4
 
 ##  Page Redirect After Logout
