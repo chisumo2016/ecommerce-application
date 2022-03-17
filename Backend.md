@@ -12,3 +12,16 @@
          footer.blade.php
          sidebar.blade.php
     Our main content will be a yield in the admin_master.blade.php file.
+        @yield('admin_content')
+    Extends  to the admin/index file  
+         @extends('admin.admin_master')
+         @section('admin_content')
+            staff
+         @endsection
+
+## Dashboard Page Segmentation
+    We gonna seperate the dashboard page into tthree segmentation from our master file.
+         header.blade.php
+         footer.blade.php
+         sidebar.blade.php
+    In the master file you should use the @include('admin.partials.header')
