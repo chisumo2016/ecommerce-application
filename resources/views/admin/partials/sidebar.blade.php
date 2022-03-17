@@ -646,23 +646,23 @@
                         <p>Level 1</p>
                     </a>
                 </li>
-                <li class="nav-header">LABELS</li>
+                <li class="nav-header">Management</li>
                 <li class="nav-item">
                     <a href="#" class="nav-link">
-                        <i class="nav-icon far fa-circle text-danger"></i>
-                        <p class="text">Important</p>
+                        <i class="nav-icon fa fa-users text-danger"></i>
+                        <p class="text">Profile</p>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a href="#" class="nav-link">
-                        <i class="nav-icon far fa-circle text-warning"></i>
-                        <p>Warning</p>
+                        <i class="nav-icon fa fa-cog text-warning"></i>
+                        <p>Settings</p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="{{ route('admin.logout') }}" class="nav-link">
                         <i class="nav-icon far fa-circle text-info"></i>
-                        <p>Informational</p>
+                        <p>Logout</p>
                     </a>
                 </li>
             </ul>

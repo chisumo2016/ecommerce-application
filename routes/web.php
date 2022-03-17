@@ -36,3 +36,5 @@ Route::group(['prefix' =>'admin', 'middleware'=>['admin:admin']], function () {
     Route::get('/login',         [AdminController::class ,'loginForm'])->name('admin.login');
     Route::post('/login',        [AdminController::class ,'store'])->name('admin.login');
 });
+
+Route::get('/admin/logout', [AdminController::class ,'destroy'])->name('admin.logout');

@@ -25,3 +25,13 @@
          footer.blade.php
          sidebar.blade.php
     In the master file you should use the @include('admin.partials.header')
+
+## Admin Logout Option
+    Once you have login as the admin , you will be redirected admin/dashboard page ,but 
+      you will not have the access to logout option.
+    We need to create a logout option file in the admin panel.
+     Add the logout link in sidebar file in the admin panel.
+       and add the logout link href="{{ route('admin.logout') }}"
+     Create a route in web file. to create a logout route
+         Route::get('/admin/logout', [AdminController::class ,'destroy'])->name('admin.logout');
+     In the adminController , there's  destroy method to logout the system
