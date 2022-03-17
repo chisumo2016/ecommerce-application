@@ -11,8 +11,8 @@ use App\Models\Admin;
 use Illuminate\Cache\RateLimiting\Limit;
 
 use Illuminate\Contracts\Auth\StatefulGuard;
-use Laravel\Fortify\Actions\AttemptToAuthenticate;
-use Laravel\Fortify\Actions\RedirectIfTwoFactorAuthenticatable;
+use App\Actions\Fortify\AttemptToAuthenticate;
+use App\Actions\Fortify\RedirectIfTwoFactorAuthenticatable;
 use App\Http\Controllers\AdminController;
 
 use Illuminate\Http\Request;

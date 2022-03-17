@@ -167,6 +167,34 @@
     Inside the AdminController we need to change the redirect to the dashboard
       CHANGE:   : redirect()->intended(Fortify::redirects('admin/dashboard'));
       TO    :  : redirect()->intended('admin/dashboard');
+
 ## Laravel 9 Multi Auth Part 4
+      localhost:8000/login
+        localhost:8000/admin/dashboard
+      Some issue to our default user login , it show these credintials do not match our records
+      In the FortifyServiceProvider we need to change our namespace to App\Fortify
+          CHANGE:  use Laravel\Fortify\Actions\AttemptToAuthenticate;
+                   use Laravel\Fortify\Actions\RedirectIfTwoFactorAuthenticatable;
+          TO:      use App\Actions\Fortify\AttemptToAuthenticate;
+                   use App\Actions\Fortify\RedirectIfTwoFactorAuthenticatable;
+      Repeat the process for the AdminController
+          CHANGE:  use Laravel\Fortify\Actions\AttemptToAuthenticate;
+                   use Laravel\Fortify\Contracts\TwoFactorAuthenticatable;
+          TO:      use Laravel\Fortify\Actions\RedirectIfTwoFactorAuthenticatable;
+                   use App\Actions\Fortify\RedirectIfTwoFactorAuthenticatable;
+      Succesfully finished the process of Multi Auth System
 
 ##  Page Redirect After Logout
+    This part we don't want to redirect to the home page after logout
+     It should redirect to the  login page
+    In the AdminController ->destroy() .There's  return app(LogoutResponse::class);
+         (vendor/laravel/fortify/src/Http/Responses/LogoutResponse.php) click or open the file
+    In toResponse($request) we need to change the return 
+        from: redirect(Fortify::redirects('logout', '/'));
+        to : redirect(Fortify::redirects('logout', 'admin/login'));
+    try to login again and logout , it will redirect to the http://e-commerce.test/admin/login
+    We have to repeat the process to the login as normal user, we have to go to AuthenticateSessionController 
+    Inside the AuthenticateSessionController  ,look for destroy() method , 
+    Inside the LogoutResponse we need to change the redirect to the login page
+        CHANGE:  return redirect(Fortify::redirects('login', 'admin/login'));
+        TO    :  return redirect(Fortify::redirects('login', 'login'));
