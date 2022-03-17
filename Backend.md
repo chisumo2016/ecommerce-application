@@ -35,3 +35,23 @@
      Create a route in web file. to create a logout route
          Route::get('/admin/logout', [AdminController::class ,'destroy'])->name('admin.logout');
      In the adminController , there's  destroy method to logout the system
+    Call the destroy method in the web route file.
+         Route::get('/admin/logout', [AdminController::class ,'destroy'])->name('admin.logout');
+    Try - OK
+
+## Customize Login Form
+    Customize the login form in the admin panel.we need to have two separate login page for our admin and user.
+       before we were sharing one login page.
+    Create a new file within the auth folder named admin_login.blade.php
+    Select everything from the login form template (theme)and paste it in the auth/admin_login.blade.php file.
+    We need to customize the login form by add the {{ asset('backend/') }}
+    In order to access the new admin_login file, we need to go to the AdminController and change 
+      the view to access the view('auth.admin_login')
+    We need to customize the login form as  login.blade.php is for normal user login and we need to 
+     create another login for our admin .(admin_login.blade.php)
+    Take the value from the normal login form and put into  admin_login.blade.php file.
+    In adminController we have logged tp use view('auth.admin_login')
+    Try to log as admin and see the difference.
+    You can access the admin panel by typing the url http://localhost/admin/login
+
+## Refresh Admin Template
