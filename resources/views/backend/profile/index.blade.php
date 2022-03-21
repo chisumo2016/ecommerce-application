@@ -27,11 +27,11 @@
                         <div class="text-center">
                             <img
                                 class="profile-user-img img-fluid img-circle"
-                                src="{{ (!empty($data->profile_photo_path)) ? url('upload/admin_images'.$data->profile_photo_path) : url('upload/no_image.jpg') }}"
+                                src="{{ (!empty($data->profile_photo_path)) ? url('upload/admin_images/'.$data->profile_photo_path) : url('upload/no_image.jpg') }}"
                                 alt="User profile picture">
                         </div>
 
-                        <h3 class="profile-username text-center">Admin Name : {{$data->name }} </h3>
+                        <h3 class="profile-username text-center">Admin Name : {{ $data->name }} </h3>
                         <a href="{{ route('admin.profile.edit' ) }}" class="btn btn-success" style="float: right">Edit Profile</a>
                         <h5 class="profile-username text-center">Admin Email : {{$data->email }}</h5>
 

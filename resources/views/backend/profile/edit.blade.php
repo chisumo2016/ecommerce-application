@@ -28,9 +28,10 @@
                         <div class="card-header">
                             <h3 class="card-title">Admin <small> Profile</small></h3>
                         </div>
-                        <!-- /.card-header -->
+                        <!-- /.card-heaactionder -->
                         <!-- form start -->
-                        <form id="quickForm" novalidate="novalidate">
+                        <form action="{{ route('admin.profile.store') }}" method="post" enctype="multipart/form-data">
+                            @csrf
                             <div class="card-body">
                                 <div class="col-md-12">
                                     <div class="row">
@@ -40,7 +41,7 @@
                                                 <input
                                                     type="text"
                                                     name="name"
-                                                    value="{{$profile_edit->name}}"
+                                                    value="{{ $profile_edit->name}}"
                                                     class="form-control"
                                                     id="exampleInputEmail1"
                                                     placeholder="Enter email">

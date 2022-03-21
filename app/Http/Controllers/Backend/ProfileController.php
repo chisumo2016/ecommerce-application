@@ -20,4 +20,22 @@ class ProfileController extends Controller
         return view('backend.profile.edit', compact('profile_edit'));
     }
 
+    public function store(Request $request)
+    {
+        $profile_update = Admin::find(1);
+        $profile_update->name = $request->name;
+        $profile_update->email = $request->email;
+
+        if($request->hasFile('profile_photo_path')) {
+            $image = $request->file('profile_photo_path');
+            @unlink(public_path('/upload/admin_images'.$profile_update->profile_photo_path));
+            $image_name = time() . '.' . $image->getClientOriginalExtension();
+            $destinationPath = public_path('/upload/admin_images');
+            $image->move($destinationPath, $image_name);
+            $profile_update->profile_photo_path = $image_name;
+        }
+        $profile_update->save();
+        return redirect()->route('admin.profile')->with('success', 'Profile Updated Successfully');
+    }
+
 }

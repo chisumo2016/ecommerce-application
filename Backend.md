@@ -85,6 +85,11 @@
     Use the Javascript to load the image in the form.
     Add the value of the image to the form. value="{{ $data->profile_photo_path }}"
 
-## Admin Profile & Image Part 2
+## Admin Profile & Image Part 3
     Display the image with javascript.
     Load the jquery cdn
+    Add the funcctionality to uplaod the image with javascript.
+    We have add the id="profile_photo" and id="image" to the form.
+
+## Admin Profile & Image Part 4
+    Add the action into our form
