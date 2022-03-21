@@ -117,3 +117,16 @@
                     toastr.info("{{ Session::get('info') }}")
                 @endif
             </script>
+
+## Admin Profile Change Password 1 
+    Change the password
+    Create a link to sidebar to change the password. and add the router name.
+    Add the route in the web file to change the password
+      Route::get('/admin/change-password', [ChangePasswordController::class ,'changePassword)->name('admin.change-password');
+    Add the functionality to the changePassword method.
+    Add the form to change the password. and pass the url to the form to change the password.
+    Add the route name to the form.
+       <form action="{{ route('admin.change-password.update') }}" method="post">
+        @csrf
+   
+## Admin Profile Change Password 1 

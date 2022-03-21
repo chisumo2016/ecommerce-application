@@ -43,4 +43,22 @@ class ProfileController extends Controller
         return redirect()->route('admin.profile')->with($notification);
     }
 
+    public function changePassword()
+    {
+        return view('backend.profile.change_password');
+    }
+
+    public function updatePassword(Request $request)
+    {
+        $profile_update = Admin::find(1);
+        $profile_update->password = bcrypt($request->password);
+        $profile_update->save();
+
+        $notification = array(
+            'message' => 'Password Updated Successfully',
+            'alert-type' => 'success'
+        );
+        return redirect()->route('admin.profile')->with($notification);
+    }
+
 }

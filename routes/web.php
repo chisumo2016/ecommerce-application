@@ -42,3 +42,5 @@ Route::get('/admin/logout', [AdminController::class ,'destroy'])->name('admin.lo
 Route::get('/admin/profile', [ ProfileController::class ,'profile'])->name('admin.profile');
 Route::get('/admin/profile/edit', [ProfileController::class ,'edit'])->name('admin.profile.edit');
 Route::post('/admin/profile/store', [ProfileController::class ,'store'])->name('admin.profile.store');
+Route::get('/admin/change-password', [ProfileController::class ,'changePassword'])->name('admin.change.password');
+Route::post('/admin/change-password', [ProfileController::class ,'updatePassword'])->name('update.change.password');
