@@ -71,3 +71,16 @@
             src="{{ (!empty($data->profile_photo_path)) ? url('upload/admin_images'.$data->profile_photo_path) : url('upload/no_image.jpg') }}" 
             alt="User profile picture">
     - Create a folder upload/admin_images
+    - Add the button to edit the profile image.
+
+## Admin Profile & Image Part 2
+    Admin name is visible in the profile page.
+    Admin emmail is visible in the profile page.
+    Once the admin is clicked is edit profile button. will load the form to edit the profile.
+    Add the route in edit button.
+       <a href="{{ route('admin.profile.edit') }}" class="btn btn-success" style="float: right">Edit Profile</a>
+    Add the route in the web file.
+      Route::get('/admin/profile', [ProfileController::class ,'edit'])->name('admin.profile.edit');
+    Add the functionality to the edit method.
+    Use the Javascript to load the image in the form.
+    Add the value of the image to the form. value="{{ $data->profile_photo_path }}"

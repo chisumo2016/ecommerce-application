@@ -21,7 +21,7 @@
     <!-- Main content -->
     <section class="content">
         <div class="container-fluid">
-            <div class="row">
+            <div class="row justify-content-center">
                 <div class="col-md-6">
                     <div class="card-body box-profile">
                         <div class="text-center">
@@ -32,7 +32,7 @@
                         </div>
 
                         <h3 class="profile-username text-center">Admin Name : {{$data->name }} </h3>
-                        <a href="" class="btn btn-success" style="float: right">Edit Profile</a>
+                        <a href="{{ route('admin.profile.edit' ) }}" class="btn btn-success" style="float: right">Edit Profile</a>
                         <h5 class="profile-username text-center">Admin Email : {{$data->email }}</h5>
 
                         <p class="text-muted text-center">Software Engineer</p>
