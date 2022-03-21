@@ -129,4 +129,5 @@
        <form action="{{ route('admin.change-password.update') }}" method="post">
         @csrf
    
-## Admin Profile Change Password 1 
+## Admin Profile Change Password 2
+    In updateChange method  we need tp add the logic to change the password.

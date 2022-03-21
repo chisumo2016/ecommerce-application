@@ -35,18 +35,18 @@
                             <div class="card-body">
                                 <div class="col-md-12">
                                     <div class="row">
-                                        <div class="col-md-5">
+                                        <div class="col-md-4">
                                             <div class="form-group">
                                                 <label for="exampleInputEmail1">Current Password</label>
                                                 <input
                                                     type="password"
-                                                    name="old_password"
+                                                    name="oldpassword"
                                                     class="form-control"
                                                     id="current_password"
-                                                    placeholder="Enter email">
+                                                    placeholder="Enter Password">
                                             </div>
                                         </div>
-                                        <div class="col-md-5">
+                                        <div class="col-md-4">
                                             <div class="form-group">
                                                 <label for="exampleInputEmail1">New Password</label>
                                                 <input
@@ -54,11 +54,11 @@
                                                     name="password"
                                                     class="form-control"
                                                     id="password"
-                                                    placeholder="Enter email">
+                                                    placeholder="Enter New Password">
                                             </div>
                                         </div>
 
-                                        <div class="col-md-2">
+                                        <div class="col-md-4">
                                             <div class="form-group">
                                                 <label for="exampleInputEmail1">Confirm Password</label>
                                                 <input
@@ -66,7 +66,7 @@
                                                     name="password_confirmation"
                                                     class="form-control"
                                                     id="password_confirmation"
-                                                    placeholder="Enter email">
+                                                    placeholder="Enter Confirm Password">
                                             </div>
                                         </div>
                                     </div>

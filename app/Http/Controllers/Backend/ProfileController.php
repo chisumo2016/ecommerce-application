@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use App\Models\Admin;
 use Illuminate\Http\Request;
+use Auth;
+use Illuminate\Support\Facades\Hash;
 
 class ProfileController extends Controller
 {
@@ -50,15 +52,25 @@ class ProfileController extends Controller
 
     public function updatePassword(Request $request)
     {
-        $profile_update = Admin::find(1);
-        $profile_update->password = bcrypt($request->password);
-        $profile_update->save();
 
-        $notification = array(
-            'message' => 'Password Updated Successfully',
-            'alert-type' => 'success'
-        );
-        return redirect()->route('admin.profile')->with($notification);
-    }
+        $validatedData = $request->validate([
+            'oldpassword'  => 'required',
+            'password'      => 'required|confirmed',
+            //'password_confirmation' => 'required|min:6',
+        ]);
+
+        $hashPassword = Admin::find(1)->password;//db
+
+        if(Hash::check($request->oldpassword,$hashPassword)) {
+            $profile_admin = Admin::find(1);
+            $profile_admin->password = Hash::make($request->password);
+            $profile_admin->save();
+            Auth::logout();
+            return redirect()->route('admin.logout');
+        } else {
+            return redirect()->back();
+        }
+        //$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi
+        }
 
 }
