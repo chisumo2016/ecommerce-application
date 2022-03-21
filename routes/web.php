@@ -26,12 +26,7 @@ Route::middleware(['auth:sanctum,admin', 'verified'])->get('/admin/dashboard', f
     return view('admin.index');
 })->name('dashboard');
 
-/**
- * User routes
- */
-Route::middleware(['auth:sanctum,web', 'verified'])->get('/dashboard', function () {
-    return view('dashboard');
-})->name('dashboard');
+
 
 Route::group(['prefix' =>'admin', 'middleware'=>['admin:admin']], function () {
     Route::get('/login',         [AdminController::class ,'loginForm'])->name('admin.login');
@@ -44,3 +39,13 @@ Route::get('/admin/profile/edit', [ProfileController::class ,'edit'])->name('adm
 Route::post('/admin/profile/store', [ProfileController::class ,'store'])->name('admin.profile.store');
 Route::get('/admin/change-password', [ProfileController::class ,'changePassword'])->name('admin.change.password');
 Route::post('/admin/change-password', [ProfileController::class ,'updatePassword'])->name('update.change.password');
+
+
+/**
+ * User routes
+ */
+Route::middleware(['auth:sanctum,web', 'verified'])->get('/dashboard', function () {
+    return view('dashboard');
+})->name('dashboard');
+
+Route::get('/logout', [\App\Http\Controllers\Auth\IndexController::class ,'index']);

@@ -131,3 +131,9 @@
    
 ## Admin Profile Change Password 2
     In updateChange method  we need tp add the logic to change the password.
+    Add the validation to the form.
+    Add the route name to the form.
+       <form action="{{ route('admin.change-password.update') }}" method="post">
+        @csrf
+    Add the route in the web file to change the password.
+      Route::post('/admin/change-password/update', [ChangePasswordController::class ,'updateChangePassword)->name('admin.change-password.update');
