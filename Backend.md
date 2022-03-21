@@ -55,3 +55,5 @@
     You can access the admin panel by typing the url http://localhost/admin/login
 
 ## Refresh Admin Template
+    To clean our dashboard so that can be more organized.
+    To clean the sidebar and the index page
