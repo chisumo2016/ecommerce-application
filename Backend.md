@@ -57,3 +57,17 @@
 ## Refresh Admin Template
     To clean our dashboard so that can be more organized.
     To clean the sidebar and the index page
+
+## Admin Profile & Image Part 1
+     - Create a view page for our profile page.
+     - Create a folder named profile in views and create a profile.blade.php file in it.
+     - Create the url in the web file for our profile page.
+     - Create a controller for our profile page.    
+          php artisan make:controller Backend/ProfileController
+     - Add  functionality to our Profile Controller
+     -Display the profile page information to the view page.
+         <img
+            class="profile-user-img img-fluid img-circle"
+            src="{{ (!empty($data->profile_photo_path)) ? url('upload/admin_images'.$data->profile_photo_path) : url('upload/no_image.jpg') }}" 
+            alt="User profile picture">
+    - Create a folder upload/admin_images

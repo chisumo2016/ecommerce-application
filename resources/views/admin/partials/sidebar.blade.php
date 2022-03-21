@@ -128,7 +128,7 @@
 
                 <li class="nav-header">Management</li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="{{ route('admin.profile') }}" class="nav-link">
                         <i class="nav-icon fa fa-users text-danger"></i>
                         <p class="text">Profile</p>
                     </a>
