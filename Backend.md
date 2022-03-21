@@ -92,4 +92,12 @@
     We have add the id="profile_photo" and id="image" to the form.
 
 ## Admin Profile & Image Part 4
-    Add the action into our form
+    Add the action into our form called edit Button
+    Add the route name in edit button.
+       <a href="{{ route('admin.profile.update') }}" class="btn btn-success" style="float: right">Update</a>
+    Add thee route in the web file.
+      Route::post('/admin/profile/store', [ProfileController::class ,'store'])->name('admin.profile.update');
+    Add the functionality to the store method.
+    Add the validation to the form.
+    Link to edit the profile form . 
+   
