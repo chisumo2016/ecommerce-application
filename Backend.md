@@ -84,3 +84,7 @@
     Add the functionality to the edit method.
     Use the Javascript to load the image in the form.
     Add the value of the image to the form. value="{{ $data->profile_photo_path }}"
+
+## Admin Profile & Image Part 2
+    Display the image with javascript.
+    Load the jquery cdn

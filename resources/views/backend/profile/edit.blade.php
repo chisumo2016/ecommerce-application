@@ -1,5 +1,6 @@
 @extends('admin.admin_master')
 @section('admin_content')
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <!-- Content Header (Page header) -->
     <div class="content-header">
         <div class="container-fluid">
@@ -64,7 +65,7 @@
                                                 <label for="exampleInputFile">Avatar</label>
                                                 <div class="input-group">
                                                     <div class="custom-file">
-                                                        <input type="file" name="profile_photo_path" class="custom-file-input" id="exampleInputFile">
+                                                        <input type="file" name="profile_photo_path" class="custom-file-input" id="image">
                                                         <label class="custom-file-label" for="exampleInputFile">Choose file</label>
                                                     </div>
                                                     <div class="input-group-append">
@@ -75,6 +76,7 @@
                                         </div>
                                         <div class="col-md-6">
                                             <img
+                                                id="display_image"
                                                 src="{{ (!empty($profile_edit ->profile_photo_path)) ? url('upload/admin_images'.$profile_edi->profile_photo_path) : url('upload/no_image.jpg') }}"
                                                 alt=""
                                                 style="width:100px; height: 100px">
@@ -93,4 +95,16 @@
         </div><!-- /.container-fluid -->
     </section>
     <!-- /.content -->
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#image').change(function(e) {
+
+                var reader = new FileReader();
+                reader.onload = function(e) {
+                    $('#display_image').attr('src', e.target.result);
+                }
+                reader.readAsDataURL(e.target.files[0]);
+            });
+        });
+    </script>
 @endsection
