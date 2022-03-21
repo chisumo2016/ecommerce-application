@@ -78,7 +78,7 @@
                                         <div class="col-md-6">
                                             <img
                                                 id="display_image"
-                                                src="{{ (!empty($profile_edit ->profile_photo_path)) ? url('upload/admin_images'.$profile_edi->profile_photo_path) : url('upload/no_image.jpg') }}"
+                                                src="{{ (!empty($profile_edit->profile_photo_path)) ? url('upload/admin_images/'.$profile_edit->profile_photo_path) : url('upload/no_image.jpg') }}"
                                                 alt=""
                                                 style="width:100px; height: 100px">
                                         </div>

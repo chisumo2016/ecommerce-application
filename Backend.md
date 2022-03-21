@@ -100,4 +100,20 @@
     Add the functionality to the store method.
     Add the validation to the form.
     Link to edit the profile form . 
-   
+    Display the image
+
+## Adding Toaster in the View Message
+    Add the toaster in the view.
+    We need three files for our toaster.
+      
+         1:  https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css"
+         2:  https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js
+         3: <script>
+                @if(Session::has('message'))
+                    toastr.success("{{ Session::get('message') }}")
+                @endif
+            
+                @if(Session::has('info'))
+                    toastr.info("{{ Session::get('info') }}")
+                @endif
+            </script>
