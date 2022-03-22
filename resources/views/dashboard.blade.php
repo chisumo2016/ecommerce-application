@@ -6,7 +6,7 @@
               <div class="col-md-2">
                    <br>
                   <img
-                      src="{{ (!empty($profile_edit->profile_photo_path)) ? url('upload/admin_images/'.$profile_edit->profile_photo_path) : url('upload/no_image.jpg') }}"
+                      src="{{ (!empty($user->profile_photo_path)) ? url('upload/user_images/'.$user->profile_photo_path) : url('upload/no_image.jpg') }}"
                       alt=""
                       class="card-img-top"
                       style="border-radius:50%"

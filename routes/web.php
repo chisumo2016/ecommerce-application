@@ -3,6 +3,8 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Backend\ProfileController;
 use App\Http\Controllers\Frontend\IndexController;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -42,9 +44,12 @@ Route::post('/admin/change-password', [ProfileController::class ,'updatePassword
  * User routes
  */
 Route::middleware(['auth:sanctum,web', 'verified'])->get('/dashboard', function () {
-    return view('dashboard');
+    $id = Auth::user()->id;
+    $user = User::find($id);
+    return view('dashboard',compact('user'));
 })->name('dashboard');
 
 Route::get('/', [IndexController::class ,'index']);
 Route::get('/user/logout', [IndexController::class ,'logout'])->name('user.logout');
 Route::get('/user/profile', [IndexController::class ,'profile'])->name('user.profile');
+Route::post('/user/profile/store', [IndexController::class ,'UserProfile'])->name('user.profile.store');

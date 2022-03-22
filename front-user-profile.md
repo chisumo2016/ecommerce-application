@@ -33,3 +33,15 @@
         }
         
  ## User Profile Design Part  3
+    we need to copy the dashboard.blade.php to the user profile
+    create the form for the user profile
+    add the field in the form
+    create the route for the user
+    Add the functionality in store IndexController , copy the code from AdminProfileController
+    Create a folder user_images in public/upload  public/upload/user_images
+    Display the image in the user profile
+    we need to pass the data into dashboard via web file
+       $id = Auth::user()->id;
+       $user = User::find($id);
+    Pass the varioable into the dashboard
+    Add the unlink method @unlink(public_path('/upload/user_images'.$data->profile_photo_path));
