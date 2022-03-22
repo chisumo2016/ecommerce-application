@@ -51,4 +51,13 @@ class IndexController extends Controller
         );
         return redirect()->route('dashboard')->with($notification);
     }
+
+    public function changePassword()
+    {
+        $id = Auth::user()->id;
+        $user = User::find($id);
+        return view('frontend.profile.change_password',compact('user'));
+
+    }
 }
+

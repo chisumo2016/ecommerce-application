@@ -64,5 +64,25 @@
         return redirect()->route('dashboard')->with($notification);
 
 ## User Profile Password Change 1
+    The  login user can change the password by clicking the change password button
+    Create thee route name in the user_profile.blade.php
+        <a href="{{ route('user.change.password') }}" class="btn btn-primary btn-sm btn-block">Change Password</a>
+    Add the route name in the web file
+        Route::get('/user/change-password', [IndexController::class ,'changePassword'])->name('user.change-password');
+    Create the method above in Index Controller
+          public function changePassword()
+            {
+                return view('frontend.profile.change_password');
+        
+            }
+     Load the page called change-password.blade.php
+     Take the code from user_profile.blade.php and paste it in change_password.blade.php
+     Open the update-password.blade.php and compare the code
+           resources/views/profile/update-password-form.blade.php
+    use the query builder to display the image, PASS THE UI 
+      @php
+        $user = DB::table('users')->where('id', Auth::user()->id)->first();
+     @endphp
+
 ## User Profile Password Change 2
 ## Upload Project to Github

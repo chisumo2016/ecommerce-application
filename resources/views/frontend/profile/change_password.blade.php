@@ -24,36 +24,44 @@
                 </div>
                 <div class="col-md-6">
                     <div class="card">
-                        <h3 class="text-center"><span class="text-danger">Hi ....</span><strong>{{ Auth::user()->name }} </strong> Update You Profile </h3>
+                        <h3 class="text-center"><span class="text-danger">Change Password</span> </h3>
 
                         <div class="card-body">
                             <form action="{{ route('user.profile.store') }}" method="post" enctype="multipart/form-data">
                                 @csrf
                                 <div class="form-group">
-                                    <label for="name">User Name</label>
-                                    <input type="text" name="name" class="form-control" value="{{ $user->name }}">
+                                    <label for="name">Current Password</label>
+                                    <input
+                                        type="text"
+                                        id="current_password"
+                                        name="oldpassword"
+                                        class="form-control">
                                 </div>
                                 <div class="form-group">
-                                    <label for="email">Email</label>
-                                    <input type="email" name="email" class="form-control" value="{{ $user->email }}">
+                                    <label for="email">New Password</label>
+                                    <input
+                                        id="password"
+                                        type="password"
+                                        name="password"
+                                        class="form-control">
                                 </div>
                                 <div class="form-group">
-                                    <label for="phone">Phone</label>
-                                    <input type="text" name="phone" class="form-control" value="{{ $user->phone }}">
+                                    <label for="phone">Confirm Password</label>
+                                    <input
+                                        id="password_confirmation"
+                                        type="password"
+                                        name="password_confirmation"
+                                        class="form-control">
                                 </div>
                                 <div class="form-group">
-                                    <label for="profile_photo">Profile Photo</label>
-                                    <input type="file" name="profile_photo_path" class="form-control">
-                                </div>
-                                <div class="form-group">
-                                    <button type="submit" class="btn btn-success btn-block">Update Profile</button>
+                                    <button type="submit" class="btn btn-success btn-block">Update</button>
                                 </div>
                             </form>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
 
-    </div>
+        </div>
 @endsection
 
