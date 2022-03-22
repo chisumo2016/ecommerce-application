@@ -56,5 +56,20 @@
             @endauth
 
 ## Frontend Template Password Page Setup
-
+     http://e-commerce.test/forgot-password
+    In UI of login page there is a forgot password link
+       php artisan route:list
+    Update the forgot password page in resources/views/auth/forgot-password.blade.php
+    Take the page from login page and paste
+    Update the field to remain with email
+    We gonna use use mailtrap to send the email and create a new account
+    Update env file
+    Test the application
+    User click the in the mailtrap link ,it will redirect to the reset password page
+       resources/views/auth/reset-password.blade.php
+    We need to change our default password reset page to our own password reset page(theme)
+    Copy everything from the forgot password page and paste to the reset password page
+    Update the fields and hidden fields
+    Test the application
+    
 
