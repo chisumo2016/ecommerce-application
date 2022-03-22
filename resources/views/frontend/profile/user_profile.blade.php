@@ -10,7 +10,7 @@
                         alt=""
                         class="card-img-top"
                         style="border-radius:50%"
-                        height="100%" width="100%">
+                        height="50%" width="50%">
                     <br><br>
                     <ul class="list-group list-group-flush">
                         <a href="{{ route('dashboard') }}" class="btn btn-primary btn-sm btn-block">Home</a>

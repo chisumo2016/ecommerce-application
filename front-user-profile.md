@@ -45,3 +45,24 @@
        $user = User::find($id);
     Pass the varioable into the dashboard
     Add the unlink method @unlink(public_path('/upload/user_images'.$data->profile_photo_path));
+
+## Toastr Alert Add Toastr Alert
+    To add  alert message in the dashboard with Toastr
+    To dispaly the toastr  in the dashboad
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+        <script>
+            @if(Session::has('success'))
+                toastr.success("{{ Session::get('success') }}")
+            @endif
+        </script>
+    To use the toasr in indexController
+         $notification = array(
+            'message' => 'User Profile Updated Successfully',
+            'alert-type' => 'success'
+        );
+        return redirect()->route('dashboard')->with($notification);
+
+## User Profile Password Change 1
+## User Profile Password Change 2
+## Upload Project to Github
