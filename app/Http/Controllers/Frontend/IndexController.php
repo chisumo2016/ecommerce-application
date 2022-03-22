@@ -3,10 +3,10 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
-use App\Models\Admin;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class IndexController extends Controller
 {
@@ -52,11 +52,39 @@ class IndexController extends Controller
         return redirect()->route('dashboard')->with($notification);
     }
 
-    public function changePassword()
+    public function UserChangePassword()
     {
         $id = Auth::user()->id;
         $user = User::find($id);
         return view('frontend.profile.change_password',compact('user'));
+
+    }
+
+    public function UserUpdatePassword(Request $request)
+    {
+        $validatedData = $request->validate([
+            'oldpassword'  => 'required',
+            'password'      => 'required|confirmed',
+            //'password_confirmation' => 'required|min:6',
+        ]);
+
+        $hashPassword = Auth::user()->password;// authenticated user password
+
+        if(Hash::check($request->oldpassword,$hashPassword)) {
+            $user = User::find(Auth::id());
+            $user->password = Hash::make($request->password);
+            $user->save();
+
+            $notification = array(
+                'message' => 'User Password Changed Successfully',
+                'alert-type' => 'success'
+            );
+
+            Auth::logout();
+            return redirect()->route('user.logout')->with($notification);
+        } else {
+            return redirect()->back();
+        }
 
     }
 }

@@ -27,12 +27,12 @@
                         <h3 class="text-center"><span class="text-danger">Change Password</span> </h3>
 
                         <div class="card-body">
-                            <form action="{{ route('user.profile.store') }}" method="post" enctype="multipart/form-data">
+                            <form action="{{ route('user.password.update') }}" method="post">
                                 @csrf
                                 <div class="form-group">
                                     <label for="name">Current Password</label>
                                     <input
-                                        type="text"
+                                        type="password"
                                         id="current_password"
                                         name="oldpassword"
                                         class="form-control">

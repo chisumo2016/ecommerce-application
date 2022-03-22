@@ -85,4 +85,13 @@
      @endphp
 
 ## User Profile Password Change 2
+    Successfully create a change password form
+    Let us us the logic fromm the AdminProfileController to  implemnt the User Profile Password Change
+    Add the route name in change_password.php in the form
+       <form action="{{ route('user.password.update') }}" method="post">
+         @csrf
+       </form>
+    Add the web file 
+    Route::POST('/user/update-password', [IndexController::class ,'UserUpdatePassword'])->name('user.password.update');
+    Add the functionality of UserUpdatePassword in indexController .Take the code from AdminProfile
 ## Upload Project to Github

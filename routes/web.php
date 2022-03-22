@@ -53,4 +53,5 @@ Route::get('/', [IndexController::class ,'index']);
 Route::get('/user/logout', [IndexController::class ,'logout'])->name('user.logout');
 Route::get('/user/profile', [IndexController::class ,'profile'])->name('user.profile');
 Route::post('/user/profile/store', [IndexController::class ,'UserProfile'])->name('user.profile.store');
-Route::get('/user/change-password', [IndexController::class ,'changePassword'])->name('user.change.password');
+Route::get('/user/change-password', [IndexController::class ,'UserChangePassword'])->name('user.change.password');
+Route::POST('/user/update-password', [IndexController::class ,'UserUpdatePassword'])->name('user.password.update');
