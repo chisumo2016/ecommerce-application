@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\Backend\BrandController;
 use App\Http\Controllers\Backend\ProfileController;
 use App\Http\Controllers\Frontend\IndexController;
 use App\Models\User;
@@ -55,3 +56,9 @@ Route::get('/user/profile', [IndexController::class ,'profile'])->name('user.pro
 Route::post('/user/profile/store', [IndexController::class ,'UserProfile'])->name('user.profile.store');
 Route::get('/user/change-password', [IndexController::class ,'UserChangePassword'])->name('user.change.password');
 Route::POST('/user/update-password', [IndexController::class ,'UserUpdatePassword'])->name('user.password.update');
+
+
+Route::controller(BrandController::class)->prefix('/brand')->group(function () {
+    Route::get('/', 'index')->name('brand.index');
+
+});

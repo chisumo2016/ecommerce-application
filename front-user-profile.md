@@ -94,4 +94,6 @@
     Add the web file 
     Route::POST('/user/update-password', [IndexController::class ,'UserUpdatePassword'])->name('user.password.update');
     Add the functionality of UserUpdatePassword in indexController .Take the code from AdminProfile
+
+
 ## Upload Project to Github
