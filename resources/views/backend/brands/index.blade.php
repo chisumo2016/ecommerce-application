@@ -2,10 +2,12 @@
 @section('admin_content')
     <div class="container-fluid">
         <div class="row">
+
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
                         <h3 class="card-title">Display Brand List</h3>
+                        <a href="{{ route('brand.create') }}" class="btn btn-primary float-right" style="">create brand</a>
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">

@@ -57,8 +57,10 @@ Route::post('/user/profile/store', [IndexController::class ,'UserProfile'])->nam
 Route::get('/user/change-password', [IndexController::class ,'UserChangePassword'])->name('user.change.password');
 Route::POST('/user/update-password', [IndexController::class ,'UserUpdatePassword'])->name('user.password.update');
 
-
+/**** Brands ***/
 Route::controller(BrandController::class)->prefix('/brand')->group(function () {
     Route::get('/', 'index')->name('brand.index');
+    Route::get('/create', 'create')->name('brand.create');
+    Route::post('/store', 'store')->name('brand.store');
 
 });
