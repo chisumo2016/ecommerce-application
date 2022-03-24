@@ -12,23 +12,27 @@
                         <table id="example1" class="table table-bordered table-striped">
                             <thead>
                             <tr>
-                                <th>Rendering engine</th>
-                                <th>Browser</th>
-                                <th>Platform(s)</th>
-                                <th>Engine version</th>
-                                <th>CSS grade</th>
+                                <th>Brand En</th>
+                                <th>Brand Tz</th>
+                                <th>Image</th>
+                                <th>Action</th>
                             </tr>
                             </thead>
                             <tbody>
                             @foreach($brands as $brand)
                                 <tr>
-                                    <td>Trident</td>
-                                    <td>Internet
-                                        Explorer 4.0
+                                    <td>{{$brand->brand_name_en}}</td>
+                                    <td>>{{$brand->brand_name_tz}}</td>
+                                    <td>
+                                        <img
+                                            src="{{ asset($brand->brand_name_tz) }}"
+                                            style="width:70px; height:40px;"
+                                            alt="">
                                     </td>
-                                    <td>Win 95+</td>
-                                    <td> 4</td>
-                                    <td>X</td>
+                                    <td>
+                                        <a href="" class="btn btn-info">Edit</a>
+                                        <a href="" class="btn btn-danger">Delete</a>
+                                    </td>
                                 </tr>
                             @endforeach
 

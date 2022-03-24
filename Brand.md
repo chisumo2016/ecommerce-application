@@ -15,7 +15,10 @@
     Migrate our brand
       php artisan migrate
     create a mmethod for our brandController
-    Create a folder called brands in our resources/views/admin/brands/indeex
+    Create a folder called brands in our resources/views/admin/brands/index
+        Design the Index to display thee data 
+        Loop the brands 
+        access the property
 
 
 
