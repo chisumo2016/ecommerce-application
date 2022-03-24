@@ -27,8 +27,22 @@
      - Add the route name in the form
      - Add the enctype too uplad the image
      - Create the route in the web
+
  ## Brand Page Design Part 3
+     - Design the create ui
+     - Add the anchor tag to create a brand in index page
+     - Add the route name in the form
+     - Add the enctype too uplad the image
+     - Create the route in the web
+
  ## Add Active Side Menu
+      - add the active on side menu
+      @php
+            $prefix = Request::route()->getPrefix();
+            $route = Route::current()->getName();
+            dd($route)
+        @endphp
+     <a href="{{ url('admin/dashboard') }}" class="nav-link {{ ($route == 'dashboard') ? 'active' : '' }}">
  ## Install Image Intervation Package
  ## Brand CRUD  part 1
  ## Brand CRUD  part 2
