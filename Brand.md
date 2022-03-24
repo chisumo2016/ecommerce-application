@@ -43,7 +43,13 @@
             dd($route)
         @endphp
      <a href="{{ url('admin/dashboard') }}" class="nav-link {{ ($route == 'dashboard') ? 'active' : '' }}">
+
  ## Install Image Intervation Package
+    We're going to use Image Intervention package
+    Links
+       https://image.intervention.io/v2
+       composer   require intervention/image  
+        php artisan vendor:publish --provider="Intervention\Image\ImageServiceProviderLaravelRecent"
  ## Brand CRUD  part 1
  ## Brand CRUD  part 2
  ## Brand CRUD  part 3 Delete with sweet alert alert2
