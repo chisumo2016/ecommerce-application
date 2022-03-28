@@ -73,4 +73,7 @@
             'image'         => $save_image,
         ]);
  ## Brand CRUD  part 2
+     Implement the edit functionality
+     Create the route in index page oof brand
+     Add tp the web route 
  ## Brand CRUD  part 3 Delete with sweet alert alert2

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreBrandRequest;
+use App\Http\Requests\UpdateBrandRequest;
 use App\Models\Brand;
 use Illuminate\Http\Request;
 use Intervention\Image\Facades\Image;
@@ -80,7 +81,8 @@ class BrandController extends Controller
      */
     public function edit(Brand $brand)
     {
-        //
+        //dd($brand);
+        return view('backend.brands.edit', compact('brand'));
     }
 
     /**
@@ -90,9 +92,41 @@ class BrandController extends Controller
      * @param  \App\Models\Brand  $brand
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Brand $brand)
+    public function update(UpdateBrandRequest $request, Brand $brand)
     {
-        //
+
+        if ($request->file('image')){
+            $image = $request->file('image');
+            $name_gen = hexdec(uniqid()) .'.' . $image->getClientOriginalExtension();
+            Image::make($image)->resize(300,300)->save('upload/brand/'.$name_gen);
+            $save_image = 'upload/brand/'.$name_gen;
+
+            $brand->update([
+                'brand_name_en' => $request->brand_name_en,
+                'brand_name_tz' => $request->brand_name_tz,
+                'slug_en' => strtolower(str_replace(' ', '_',$request->brand_name_en)),
+                'slug_tz' => str_replace(' ', '_', $request->brand_name_tz),
+                'image'         => $save_image,
+            ]);
+            $notification = array(
+                'message' => 'Brand updated  Successfully',
+                'alert-type' => 'info'
+            );
+            return redirect()->route('brand.index')->with($notification);
+        }else{
+
+            $brand->update([
+                'brand_name_en' => $request->brand_name_en,
+                'brand_name_tz' => $request->brand_name_tz,
+                'slug_en' => strtolower(str_replace(' ', '_',$request->brand_name_en)),
+                'slug_tz' => str_replace(' ', '_', $request->brand_name_tz),
+            ]);
+            $notification = array(
+                'message' => 'Brand updated  Successfully',
+                'alert-type' => 'info'
+            );
+            return redirect()->route('brand.index')->with($notification);
+        }
     }
 
     /**
