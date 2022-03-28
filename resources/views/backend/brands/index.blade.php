@@ -32,8 +32,19 @@
                                             alt="">
                                     </td>
                                     <td>
-                                        <a href="{{ route('brand.edit', $brand) }}" class="btn btn-info">Edit</a>
-                                        <a href="" class="btn btn-danger">Delete</a>
+                                        <a
+                                            href="{{ route('brand.edit', $brand) }}"
+                                            class="btn btn-info"
+                                            title="Edit Data">
+                                            <i class="fa fa-pen"></i>
+                                        </a>
+                                        <a
+                                            href="{{ route('brand.delete', $brand) }}"
+                                            class="btn btn-danger"
+                                            title="Delete Data"
+                                            id="delete">
+                                            <i class="fa fa-trash"></i>
+                                        </a>
                                     </td>
                                 </tr>
                             @endforeach

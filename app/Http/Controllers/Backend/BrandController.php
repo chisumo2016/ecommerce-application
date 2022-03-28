@@ -137,6 +137,15 @@ class BrandController extends Controller
      */
     public function destroy(Brand $brand)
     {
-        //
+        $image = $brand->image;
+        unlink($image);
+        $brand->delete();
+        $notification = array(
+            'message' => 'Brand deleted  Successfully',
+            'alert-type' => 'danger'
+        );
+        return redirect()->route('brand.index')->with($notification);
+
+
     }
 }

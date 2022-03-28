@@ -75,5 +75,15 @@
  ## Brand CRUD  part 2
      Implement the edit functionality
      Create the route in index page oof brand
-     Add tp the web route 
+     Add to the web route 
+    Implemented the update function in BrandCController
+
  ## Brand CRUD  part 3 Delete with sweet alert alert2
+      We're going to delete the image with sweetalert2
+         https://sweetalert2.github.io/
+      Add the sweetalert2 tpo the admin master
+      Call the id to the index of the page
+      Add the route name oon index page
+     Add the route to the web file
+     Add the funcctionality of delete 
+    Use the icon instead if the text 
