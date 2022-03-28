@@ -48,6 +48,26 @@
                         </p>
                     </a>
                 </li>
+                {{--     Brands     --}}
+                <li class="nav-item menu-open">
+                    <a href="#" class="nav-link {{ ( $prefix == '/brand') ? 'active' : '' }}">
+                        <i class="nav-icon fas fa-tachometer-alt"></i>
+                        <p>
+                            Category
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{ route('brand.index') }}" class="nav-link  {{ ($route == 'brand.index') ? 'active' : '' }}">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>All Brands</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                {{--     Category    --}}
                 <li class="nav-item menu-open">
                     <a href="#" class="nav-link {{ ( $prefix == '/brand') ? 'active' : '' }}">
                         <i class="nav-icon fas fa-tachometer-alt"></i>

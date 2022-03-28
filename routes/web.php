@@ -67,3 +67,7 @@ Route::controller(BrandController::class)->prefix('/brand')->group(function () {
     Route::get('/{brand}', 'destroy')->name('brand.delete');
 
 });
+
+/**** Category ***/
+
+

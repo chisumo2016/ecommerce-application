@@ -7,6 +7,7 @@ use App\Http\Requests\StoreBrandRequest;
 use App\Http\Requests\UpdateBrandRequest;
 use App\Models\Brand;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 use Intervention\Image\Facades\Image;
 
 
@@ -41,25 +42,31 @@ class BrandController extends Controller
      */
     public function store(StoreBrandRequest $request)
     {
+
+        $data = $request->validated();
+
+        $data['image'] =  '/upload/no_image.jpg';
+
         $image = $request->file('image');
-        $name_gen = hexdec(uniqid()) .'.' . $image->getClientOriginalExtension();
-        Image::make($image)->resize(300,300)->save('upload/brand/'.$name_gen);
-        $save_image = 'upload/brand/'.$name_gen;
+        if ($image){
+            $name_gen = hexdec(uniqid()) .'.' . $image->getClientOriginalExtension();
+            Image::make($image)->resize(300,300)->save('upload/brand/'.$name_gen);
 
-        Brand::create([
-            'brand_name_en' => $request->brand_name_en,
-            'brand_name_tz' => $request->brand_name_tz,
-            'slug_en' => strtolower(str_replace(' ', '_',$request->brand_name_en)),
-            'slug_tz' => str_replace(' ', '_', $request->brand_name_tz),
-            'image'         => $save_image,
-        ]);
+            $data['image'] =  'upload/brand/'.$name_gen;
+        }
 
+        $data['slug_en'] = Str::slug($data['brand_name_en']);
+        $data['slug_tz'] = Str::slug($data['brand_name_tz']);
+
+        Brand::create($data);
 
         $notification = array(
             'message' => 'Brand created  Successfully',
             'alert-type' => 'success'
         );
         return redirect()->route('brand.index')->with($notification);
+
+
     }
 
     /**
@@ -94,39 +101,32 @@ class BrandController extends Controller
      */
     public function update(UpdateBrandRequest $request, Brand $brand)
     {
+        $data = $request->validated();
+
+        //assign any image already exist in database to $data['image']
+        $data['image'] = $brand->image;
 
         if ($request->file('image')){
             $image = $request->file('image');
             $name_gen = hexdec(uniqid()) .'.' . $image->getClientOriginalExtension();
             Image::make($image)->resize(300,300)->save('upload/brand/'.$name_gen);
-            $save_image = 'upload/brand/'.$name_gen;
 
-            $brand->update([
-                'brand_name_en' => $request->brand_name_en,
-                'brand_name_tz' => $request->brand_name_tz,
-                'slug_en' => strtolower(str_replace(' ', '_',$request->brand_name_en)),
-                'slug_tz' => str_replace(' ', '_', $request->brand_name_tz),
-                'image'         => $save_image,
-            ]);
-            $notification = array(
-                'message' => 'Brand updated  Successfully',
-                'alert-type' => 'info'
-            );
-            return redirect()->route('brand.index')->with($notification);
-        }else{
-
-            $brand->update([
-                'brand_name_en' => $request->brand_name_en,
-                'brand_name_tz' => $request->brand_name_tz,
-                'slug_en' => strtolower(str_replace(' ', '_',$request->brand_name_en)),
-                'slug_tz' => str_replace(' ', '_', $request->brand_name_tz),
-            ]);
-            $notification = array(
-                'message' => 'Brand updated  Successfully',
-                'alert-type' => 'info'
-            );
-            return redirect()->route('brand.index')->with($notification);
+            //DO handle delete existing image and
+            //Override $data['image'] if any file is uploaded.
+            $data['image'] = 'upload/brand/'.$name_gen;
         }
+
+        $data['slug_en'] = Str::slug($data['brand_name_en']);
+        $data['slug_tz'] = Str::slug($data['brand_name_tz']);
+
+        $brand->update($data);
+
+        $notification = array(
+            'message' => 'Brand updated  Successfully',
+            'alert-type' => 'info'
+        );
+        return redirect()->route('brand.index')->with($notification);
+
     }
 
     /**
