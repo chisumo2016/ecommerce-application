@@ -3,8 +3,11 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreBrandRequest;
 use App\Models\Brand;
 use Illuminate\Http\Request;
+use Intervention\Image\Facades\Image;
+
 
 class BrandController extends Controller
 {
@@ -35,9 +38,27 @@ class BrandController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreBrandRequest $request)
     {
+        $image = $request->file('image');
+        $name_gen = hexdec(uniqid()) .'.' . $image->getClientOriginalExtension();
+        Image::make($image)->resize(300,300)->save('upload/brand/'.$name_gen);
+        $save_image = 'upload/brand/'.$name_gen;
 
+        Brand::create([
+            'brand_name_en' => $request->brand_name_en,
+            'brand_name_tz' => $request->brand_name_tz,
+            'slug_en' => strtolower(str_replace(' ', '_',$request->brand_name_en)),
+            'slug_tz' => str_replace(' ', '_', $request->brand_name_tz),
+            'image'         => $save_image,
+        ]);
+
+
+        $notification = array(
+            'message' => 'Brand created  Successfully',
+            'alert-type' => 'success'
+        );
+        return redirect()->route('brand.index')->with($notification);
     }
 
     /**

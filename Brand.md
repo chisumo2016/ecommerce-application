@@ -50,6 +50,27 @@
        https://image.intervention.io/v2
        composer   require intervention/image  
         php artisan vendor:publish --provider="Intervention\Image\ImageServiceProviderLaravelRecent"
- ## Brand CRUD  part 1
+ 
+## Brand CRUD  part 1
+    - we need to create the brand record
+    - Add the customs message via request
+    -Validate the images via controller
+    -Use IIntervation to upload the image
+    - Create the folder upload/brand
+    - Brand::create($request->all());
+    - Brand::insert([
+            'brand_name_en' => $request->brand_name_en,
+            'brand_name_tz' => $request->brand_name_tz,
+            'slug_en' => strtolower(str_replace(' ', '_',$request->brand_name_en)),
+            'slug_tz' => str_replace(' ', '_',$request->brand_name_tz),
+            'image'         => $save_image,
+        ]);
+            Brand::create([
+            'brand_name_en' => $request->brand_name_en,
+            'brand_name_tz' => $request->brand_name_tz,
+            'slug_en' => strtolower(str_replace(' ', '_',$request->brand_name_en)),
+            'slug_tz' => str_replace(' ', '_',$request->brand_name_tz),
+            'image'         => $save_image,
+        ]);
  ## Brand CRUD  part 2
  ## Brand CRUD  part 3 Delete with sweet alert alert2

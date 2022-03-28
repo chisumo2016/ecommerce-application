@@ -24,10 +24,10 @@
                             @foreach($brands as $brand)
                                 <tr>
                                     <td>{{$brand->brand_name_en}}</td>
-                                    <td>>{{$brand->brand_name_tz}}</td>
+                                    <td>{{$brand->brand_name_tz}}</td>
                                     <td>
                                         <img
-                                            src="{{ asset($brand->brand_name_tz) }}"
+                                            src="{{ asset($brand->image) }}"
                                             style="width:70px; height:40px;"
                                             alt="">
                                     </td>

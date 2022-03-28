@@ -12,32 +12,41 @@
                                 @csrf
                                 <div class="card-body">
                                     <div class="form-group">
-                                        <label for="exampleInputEmail1">Brand Name English</label>
+                                        <label for="exampleInputEnglish">Brand Name English <span class="text-danger">*</span></label>
                                         <input
                                             type="text"
                                             name="brand_name_en"
                                             class="form-control"
-                                            id="current_password"
-                                            placeholder="Enter Password">
+                                            id="brand_name_en"
+                                            placeholder="Enter Brand Name English">
+                                        @error('brand_name_en')
+                                        <span class="text-danger">{{ $message }}</span>
+                                        @enderror
                                     </div>
                                     <div class="form-group">
-                                        <label for="exampleInputEmail1">Brand Name Tanzania</label>
+                                        <label for="exampleInputTanzania">Brand Name Tanzania <span class="text-danger">*</span></label>
                                         <input
                                             type="text"
-                                            name="brand_name_tz "
+                                            name="brand_name_tz"
                                             class="form-control"
-                                            id="current_password"
-                                            placeholder="Enter Password">
+                                            id="brand_name_tz"
+                                            placeholder="Enter Brand Name Tanzania" />
+                                            @error('brand_name_tz')
+                                            <span class="text-danger">{{ $message }}</span>
+                                            @enderror
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="exampleInputEmail1">Upload Brand Image</label>
+                                        <label for="exampleInputImage">Upload Brand Image <span class="text-danger">*</span></label>
                                         <input
                                             type="file"
                                             name="image"
                                             class="form-control"
-                                            id="current_password"
-                                            placeholder="Enter Password">
+                                            id="brand_image"
+                                            placeholder="Avatar">
+                                            @error('image')
+                                            <span class="text-danger">{{ $message }}</span>
+                                            @enderror
                                     </div>
                                 </div>
                                 <!-- /.card-body -->
